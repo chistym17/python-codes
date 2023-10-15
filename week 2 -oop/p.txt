@@ -1,0 +1,4 @@
+In this example, the factorial_helper function is defined as an inner function within the factorial function.
+This function is only used to calculate the factorial of a number,it is isolated from the rest of the code. This makes the code easier to read and understand,
+as it allows us to focus on the main logic of the factorial function without having to worry aboutthe implementation of the error handling code.
+

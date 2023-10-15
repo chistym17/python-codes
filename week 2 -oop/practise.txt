@@ -1,0 +1,70 @@
+
+
+1.Helper functions: Inner functions can be used to define helper functions that are only used by other functions within the same class.
+ it can help to improve the readability and maintainability of the code.
+
+2.Error handling: Inner functions can be used to isolate error handling code from the main body of the function.
+it can help to improve the readability of the code,as it allows you to focus on the main logic of the function.
+
+3.Concurrency: Inner functions can be used to implement concurrency . 
+it can be useful for tasks that can be broken down into smaller, independent tasks that can be executed in parallel.
+
+example:
+1.helper function:
+
+def calculate_discount(price, discount_rate):
+    def apply_discount(amount):
+        return amount - (amount * discount_rate)
+
+    discounted_price = apply_discount(price)
+    return discounted_price
+
+final_price = calculate_discount(original_price, discount)
+
+in the example,apply_discount is a helper function.
+By using the inner function apply_discount as a helper function, the code is more organized
+The apply_discount function is only relevant to the calculation of the discounted price and
+does not need to be accessed or used outside of the calculate_discount function.
+This encapsulation improves code readability and maintains a clear separation of concerns.
+
+2.Error_handling :
+
+def factorial(n):
+    if n < 0:
+        raise ValueError("n must be non-negative")
+
+    def factorial_helper(n):
+        if n == 0:
+            return 1
+        else:
+            return n * factorial_helper(n - 1)
+
+    return factorial_helper(n)
+
+In this example, the factorial_helper function is defined as an inner function within the factorial function.
+This function is only used to calculate the factorial of a number,it is isolated from the rest of the code. This makes the code easier to read and understand,
+as it allows us to focus on the main logic of the factorial function without having to worry aboutthe implementation of the error handling code.
+
+
+3.concurrency:
+
+import threading
+def perform_task(task):
+    def execute_task():
+        print(f"Executing {task}")
+
+    thread = threading.Thread(target=execute_task)
+    thread.start()
+
+task1 = "Task 1"
+task2 = "Task 2"
+
+perform_task(task1)
+perform_task(task2)
+
+
+in  this example, the perform_task function defines an inner function execute_task that represents the actual task to be performed.
+ The execute_task function is then wrapped inside a threading.
+
+When the perform_task function is called with different task names,
+separate threads are created for each task, allowing them to execute concurrently.
